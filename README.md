@@ -9,7 +9,7 @@
 - Cloud IoT Core features
   - secure connection via HTTPS or MQTT
   - CA signed certs verify device ownershiptwo-way comms allow updates, on and offline
-  - 
+  - two-way comms allow updates, on and offline
 
 ### Cloud Pub/Sub
 - global messaging and ingestion service, based on at-least-once publish/subscribe model
