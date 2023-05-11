@@ -66,6 +66,18 @@ Are you a mobile/html5 developer?
             - no: **Cloud Run**
             - yes: **GKE**
 
+### Autoscaling
+
+| Service     | Absolute Minimum | High availability | How | Speed |
+| ----------- | ---------------- | ----------------- | --- | ----- |
+| Compute Engine      | 1 instance | 2 instances | MIG or MIG + Load Blaancer | Moderate/better | 
+| GKE Pods   | 1 pod        | 2 pod deployment | Load-based Internal Kubernetes | Decent |
+| GKE Node Pool   | 1 instance        | 3 instances | Kubenretes pod back-pressure | Slow |
+| App Engine Standard   | 0        | 0 | Request-based | Almost instantaneous |
+| Cloud Run   | 0        | 0 / Adjustable | Request-based | Extremely fast |
+| Cloud Functions   | 0        | 0 / Optional | Request-based | Almost instantaneous |
+
+
 ## Big Data
 
 ### Cloud IoT Core
