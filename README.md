@@ -3,6 +3,7 @@
 # Processing Data
 
 ## Compute
+---
 
 ### Fast-Booting VMs
 - highly configurable, zonal service
@@ -47,7 +48,7 @@
 - networks well with hybrid and multi-cloud
 - acts as the glue between services
 
-
+---
 ### Chose the right compute
 Are you a mobile/html5 developer?
 - yes: **Firebase**
@@ -66,7 +67,7 @@ Are you a mobile/html5 developer?
             - no: **Cloud Run**
             - yes: **GKE**
 
-### Autoscaling
+### Autoscaling considerations
 
 | Service     | Absolute Minimum | High availability | How | Speed |
 | ----------- | ---------------- | ----------------- | --- | ----- |
@@ -79,6 +80,7 @@ Are you a mobile/html5 developer?
 
 
 ## Big Data
+---
 
 ### Cloud IoT Core
 - fully managed service to connect, manage and ingest device data globally
@@ -140,7 +142,7 @@ Are you a mobile/html5 developer?
     - no: DevOps or Serverless?
       - DevOps: Cloud Dataproc
       - Serverless: Cloud Dataflow
-
+---
 ## Key lessons
 - GCP has a full spectrum of compute services, ranging from the highly customizable Compute engine to the fully-managed Cloud Functions
 - App Engine not only has two environments - Standard and Flex, but also a 2nd generation of Standard that is more up-to-date
@@ -156,3 +158,93 @@ Are you a mobile/html5 developer?
 - IoT Core is a global fully-managed service designed to connect, managed and ingest data from internet-connected devices and a primary source for streaming data
 - Cloud Pub/Sub is a global messaging and ingestion service that supports both push and pull modes with exactly-once-processing for many GCP services
 - Cloud BigQuery is a serverless , multi-regional, multi-cloud, SQL column-store data warehouse used for data analytics and ML capable of scaling to petabytes in minutes
+
+# Google Kubernetes Engine
+
+## General 
+---
+### Coordinating Clusters
+- a cluster is at least one control plane and multiple worker machines, aka nodes
+- you can create zonal or regional clusters
+- private clusters are VPC-native clusters dependent on internal IP addresses
+- for highly available apps, distribute your workload using multi-zonal node pools
+- a horizontal pod autoscaler (HPA) checks the workload's metrics against target thresholds
+- configure horizontal pod autoscaling on deployment rather than replicaset
+
+### Workloads
+- custom and external metrics use HPA to scale based on conditions besides the workload
+- configuring limits for Pods, based on workload is highly recommended
+- ConfigMaps bind non-sensitive configuration artifacts to your Pod containers at runtime
+- Deployments are best for stateless apps with ReadOnlyMany or ReadWriteMany volumes
+- DaemonSets are good for ongoing background tasks that do not require user intervention
+- StatefulSets are pods with unique persistent identities and hostnames
+
+### Networking Pods,Services and External Clients
+- with kubernetes, think about how Pods, Services and external clients communicate, instead of how your hosts or VMs are connected
+- VPC-native clusters scale better than routes-based clusters and are needed for private clusters.
+- Shared VPC networks are best for organizations with a centralized management team
+- GKE Ingress(internal or external) implements Ingress resources as Google Cloud load balancers for HTTP(S) workloads
+- Workloads Identity links Kubernetes service accounts to Google service accounts to safely access other Google services
+
+### Operations
+- monitoring and logging can be enabled for both new and existing clusters
+- GKE containers logs are removed when the host Pod is removed, when their disk on runs out of space or when replaced by newer logs
+- GKE generated two types of metrics:
+  - system metrics - metrics from essential system componenets
+  - Workload metrics - metrics exposed by any GKE workload
+
+## Anthos 
+---
+
+### Anthos
+- application deployment anywhere: on GCP, on-premises, hybrid and multicloud (AWS and Azure)
+- supports Kubernetes Engine clusters, serverless Cloud Run and Compute Engine VMs
+- use Migrate for Anthos to migrate and modernize existing workloads to containers
+- enhance app development and delivery with up-to-date CI/CD automated pipelines
+- enabled defense-in-depth security strategy with comprehensive security controls across all deployments
+- fully integrated with Google Cloud Monitoring and Logging, including hybrid and on-prem configurations
+### Anthos Service Mesh
+- Anthos Service Mesh (ASM) enabled managed, observable and secure communication across microservices, on-remises and on GCP
+- Powered by open-source Istio, ASM is one or more control planes and a data plane which monitors all traffic through a proxy
+- Anthos Service Mesh controls traffic flow between services as well as ingress and egress:
+ - supports canary and blue-green deployments
+ - configure load balancing between services
+ - provides in-depth telemetry with Cloud Monitoring, Logging and Trace
+### Kubernetes Engine Connection
+- Anthos clusters provide a unified way to work with Kubenretes clusters as part of Anthos, extending GKE to work in multiple environments
+- Anthos on GCP uses "traditional" GKE, while on-premises uses VMWare and Bare Metal
+- Logically group and normalize mutliple clusters via Fleets to manage multi-cluster capabilities and apply consistent policies
+- Anthos config Management creates a common configuration across all infrastructure, including custom policies applied both on-premises and in the cloud
+- Binary Authorization configures a validation policy enforced when deploying a container image
+### Cloud Run for Anthos
+- Cloud Run for Anthos is managed with Knative, which enabled serverless workloads on Kubernetes
+- Streamlines operational needs with advanced workload autoscaling and automatic networking
+- Scale idle workloads to zero instances or set a minimum instance count for baseline availability
+- Out-of-the-box integration with Cloud Monitoring, Cloud Logging and Error Reporting
+- Easily perform A/B tests with traffic splitting and quickly roll back to known working services
+
+## Bare Metal
+---
+
+### Anthos Bare Metal
+- Anthos clusters on bare metal allow you to directly deploy applications on your own hardware
+- Anthos bare metal managed app deployments and health across existing data centers for more efficient operation
+- Control system security without compatibility issues for vitual machines and operating systems
+- Manage containers on a variety of performance-optimized hardware with direct access to hardware
+- Scale up application while mainting reliability regardless of fluctuations in workload and network traffic thanks to advnaced monitoring
+- Security can be customized with minimal connections to outside resources
+
+### Deployment options for Anthos on Bare Metal
+
+| Standalone | Multi-cluster | Hybrid |
+| ---------- | ------------- | ------ |
+| A single cluster serves as both user cluster and admin cluster | one admin cluster plus one or more clusters | specialized multi-cluster that runs user workloads on admin |
+| Best for single teams and single workload types | Works well for fleet of clusters with centralized management | Create from standalone by adding more user clusters |
+| Separate admin cluster not needed | Provides separation between different teams | Use only if no security concerns with user workloads on admin | 
+| Works well for clusters in edge locations | Isolates development and production workloads | |
+
+### Operating Bare metal Clusters
+- use Connect to associate your bare metal clusters to Google Cloud
+- access is enabled for workload management features and unified UI or Cloud COnsole
+- Cloud Console displays health of all connected workloads and allows modifications to all
+- put nodes into maintenance mode to drain Pods/workloads and exclude them from Pod scheduling
