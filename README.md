@@ -1,5 +1,71 @@
 # gcp-pca
 
+# Processing Data
+
+## Compute
+
+### Fast-Booting VMs
+- highly configurable, zonal service
+- choose your machine type: General purpose, compute-optimized, memory-optimized or processor-optimized (GPU)
+- select public or private disk image
+- preemtible VMs
+- sole-tenant node
+- instance groups (managed and unmanaged)
+
+### GKE
+- regional, managed container service
+- standard (total contro) and autopilot (fully managed)
+- support auto repair and auto upgrade
+- kubectl synax
+- private clusters
+- how to deploy, scale and expose services
+
+### App Engine Standard
+- regional, platform as a service for serverless applications
+- zero server management and configuration
+- instantaneous scaling, down to zero VMs
+- standard environment features second generation: Python 3, Java 11, Node.js, PHP 7, Ruby, and Go 1.12+ ; first generation is more priprietary with limited runtimes
+
+### App Engine Flex
+- for containerized applications
+- zero server management and configuration
+- best for apps with consistent traffic where more gradual scaling is acceptable
+- robutst runtimes such as Python 2.7/3.6, Java 8, Node.js, PHP 5/7, Ruby, Go and .Net
+
+### Cloud Run
+- great for modern websites, backend REST APIs and back-office administration
+- regional, fully managed, serverless service for containers
+- integrated support for all Cloud Operations services
+- build on knative open-source standards for easy portability
+- supports any language, any library and any binary
+
+### Cloud Functions
+- regional, event-driver, serverless Functions-as-a-Service FaaS
+- Available triggers: HTTP, Cloud Storage, Cloud Pub/Sub, Cloud Firestore, Audit Logs, Cloud Scheduler
+- totally serverless
+- automatic horizontal scaling
+- networks well with hybrid and multi-cloud
+- acts as the glue between services
+
+
+### Chose the right compute
+Are you a mobile/html5 developer?
+- yes: **Firebase**
+- no:
+  - are you developing an event-driven app?
+    - yes: **Cloud Functions**
+    - no: Is your application using ANY of the following: specific OS or kernel, Monolithic workloads
+      - yes: **Compute Engine**
+      - no: Does your application use or need any of the following: Hybrid or multi-cloud deployment, licensed software, use of protocols besides HTTP/S, persistent disks
+        - no: App Engine, does the app require rapid, frequent scaling?
+          - yes: **App Engine Standard**
+          - no: **App Engine Flex**
+        - yes: Will your app be in containers
+          - no: **Compute Engine**
+          - yes: Do you need a high degree of customization?
+            - no: **Cloud Run**
+            - yes: **GKE**
+
 ## Big Data
 
 ### Cloud IoT Core
