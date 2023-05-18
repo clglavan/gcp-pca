@@ -310,4 +310,55 @@ Use lifecycle Management rules to move objects between classes
       - yes: Use Coldline CLass
       - no: Use Archive Class
 
+## Saving your Data on GCP
+
+### Cloud SQL
+- Regional, fully-managed relational database service for SQL Server, MySQL, and PostgreSQL
+- Automatic replication wiht automatic failover, backup and point-in-time recovery
+- scale manually up to 96 processor cores, more than 624 GB of RAM and add read replicas as needed
+- Features include:
+  - built-in high availability
+  - automatically scale storage up to 30 TB
+  - connects with GAE, GCE, GKE and BigQuery among other services
+
+### Cloud Spanner
+- Fully managed relational database, up to 99.999% availability and unlimited scale
+- Create a Spanner instance by defining instance configuration and compute capacity
+- Use query parameters to increase efficiency and lower costs
+- Features include:
+  - Automatic sharding
+  - External consistency
+  - Backup/restore and point-in-time recovery
+
+### Cloud Bigtable
+- Fully managed, scalable NoSQL database service for large analytical and operational workloads
+- Handles large amounts of data in a key-value store and supports high read and write at low latency
+- Tables stored in instances that contain up to 4 nodes, located in different zones
+- Use cases:
+  - Time-series data
+  - Marketing and/or financial data
+  - IoT data
+
+### Firestore
+- Fully managed, scalable, serverless document database service
+- Live synchronization and offline mode allow multi-user, collaborative application on mobile web
+- Supports Datastore databases and Datastore API
+- possible workloads include:
+  - live asset and activity tracking
+  - real-time analytics
+  - media and product catalogs
+  - social user profiles and gaming leaderboards
+
+### Datastream
+- Serverless Change data capture(CDC) and replication service
+- Synchronizez data across heterogeneous databases and applications reliably
+
+### Firebase Realtime Database
+- serverless NoSQL databas for storing and syncing data
+- enhances collaboration among users across devices and web in real time
+
+### MemoryStore
+- In-memory service for Redis and Memcached
+- Provides low latency access and high throughput for heavily accessed data
+
 
