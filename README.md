@@ -295,9 +295,19 @@ Are you a mobile/html5 developer?
 
 Use lifecycle Management rules to move objects between classes
 
-
-
-
-
+- Do you need block storage ? 
+  - yes: Do you need to store your data briefly ?
+    - yes: Local SSD
+    - no: persistent Disk
+  - no: Do you need file-based storage?
+    - yes: Cloud Filestore
+    - no: Cloud Storage
+- Do your objects need to be frequently accessed? Hot objects
+  -  yes: Use Standard Class
+  -  no: Are objects acceed at most once a month?
+    - yes: Use Nearline Class
+    - no: Are objects accessed at most once a quarter?
+      - yes: Use Coldline CLass
+      - no: Use Archive Class
 
 
