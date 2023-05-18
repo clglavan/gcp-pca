@@ -288,6 +288,7 @@ Are you a mobile/html5 developer?
     - buckets support folders and subfolders
     - supports versioning per bucket, as well as maintaining a live object version and noncurrent versions
   - Permissions granted by bucket or by object and limited to specific teams or people, or fully public
+
 | Standard | Nearline | Coldline | Archive |
 | --- | --- | --- | --- |
 | For your most frequently accessed data or stored for a brief time | ideal for data you plan to read or modify on average once per month or less | Best for objects or data you plan to access at most once every 90 days | Least expensive choice for objects that you plan to access less than once a year |
