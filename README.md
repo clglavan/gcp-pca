@@ -361,4 +361,20 @@ Use lifecycle Management rules to move objects between classes
 - In-memory service for Redis and Memcached
 - Provides low latency access and high throughput for heavily accessed data
 
+### Deciding on the best database solution
 
+- Is your data structured ?
+  - no: Do you need mobile SDKs ?
+    - yes: Cloud Storage for Firebase
+    - no: Cloud Storage
+  - yes: Is your workload analytics?
+    - no: Is your data relational?
+      - no: Do you need mobile SDKs ?
+        - yes: Cloud Firestore for Firebase
+        - no: Cloud firestore
+      - yes: Do your need horizontal scalability ?
+        - yes: Cloud Spanner
+        - no: Cloud SQL
+    - yes: Do you need low latency and NoSQL ?
+      - yes: Cloud Bigtable
+      - no: BigQuery
