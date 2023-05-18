@@ -248,3 +248,33 @@ Are you a mobile/html5 developer?
 - access is enabled for workload management features and unified UI or Cloud COnsole
 - Cloud Console displays health of all connected workloads and allows modifications to all
 - put nodes into maintenance mode to drain Pods/workloads and exclude them from Pod scheduling
+
+
+## Storing Data
+---
+
+### Storing your objects and files
+- Local SSD
+  - Very fast zonal resource, 375GB solid state disks directly attached to server hosting VM instance
+  - Expandable to 3, 6, and 9 TB with increasing performance: up to 2.400.000 read and 1.200.000 write IOPS
+  - All data encrypted at rest, lost when VM stops but can survive live migration
+  - Best for transient data ( use case: media rendering, data analytics and high-performance computing ) 
+- Persevering with persistent disks
+  - Major benefit: Persistence, available even after VM shutdown
+  - Independent of VMs where data is distributed across disks for redundancy
+  - Highly durable (up to six 9s!) and secure: data encrypted at rest and in transit
+
+| Zonal | Regional | 
+| ---------- | ------------- | 
+| Data in a single zone | Data in two zones in the same region |
+| 4 types available: Standard, Balanced, SSD, and Extreme | 3 Types avaialble: Standard Blanaced and SSD |
+| Can be used for both snapshot and boot disks | Snapshots are okay, but cannot be used for boot disks |
+| You can add more storage space, throughput and IOPS | |
+
+
+
+
+
+
+
+
