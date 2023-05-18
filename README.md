@@ -292,6 +292,7 @@ Are you a mobile/html5 developer?
 | Standard | Nearline | Coldline | Archive |
 | --- | --- | --- | --- |
 | For your most frequently accessed data or stored for a brief time | ideal for data you plan to read or modify on average once per month or less | Best for objects or data you plan to access at most once every 90 days | Least expensive choice for objects that you plan to access less than once a year |
+
 Use lifecycle Management rules to move objects between classes
 
 
