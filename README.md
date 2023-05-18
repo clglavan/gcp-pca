@@ -269,8 +269,29 @@ Are you a mobile/html5 developer?
 | Data in a single zone | Data in two zones in the same region |
 | 4 types available: Standard, Balanced, SSD, and Extreme | 3 Types avaialble: Standard Blanaced and SSD |
 | Can be used for both snapshot and boot disks | Snapshots are okay, but cannot be used for boot disks |
-| You can add more storage space, throughput and IOPS | |
+| You can add more storage space, throughput and IOPS | Only storage space can be resized, throughput and IOPS cannot |
 
+- Managing file-based storage: Filestore
+  - Fully-managed, Similar to network attached storage
+  - Provision Filestore instance in zone, Access via VPC using NFSv3 protocol
+  - Consistently fast performance, great for lift-and-shift migration
+  - Backups are fully supported, snapshots (read-only) are supported
+  - 3 Filestore tier levels, Basic, Enterprise and High Scale
+    - Basic - best for file sharing, GKE, software dev and web hosting, HDD 1-63 TiB, SSD 2.5-63 TiB
+    - Enterprise - best for critical applications, GCE, and GKE workloads, 1-10 TiB
+    - High Scale - best for high-performance computing e.g. genome sequencing, 10-100 TiB
+- Keeping Objects in Cloud Storage
+  - Infinitely scalable, fully managed, highly durable object storage service
+  - For mutable, unstructured data such as images, videos and documents
+  - All objects are stored in buckets
+    - buckets can be regional or multi regional
+    - buckets support folders and subfolders
+    - supports versioning per bucket, as well as maintaining a live object version and noncurrent versions
+  - Permissions granted by bucket or by object and limited to specific teams or people, or fully public
+| Standard | Nearline | Coldline | Archive |
+| --- | --- | --- | --- |
+| For your most frequently accessed data or stored for a brief time | ideal for data you plan to read or modify on average once per month or less | Best for objects or data you plan to access at most once every 90 days | Least expensive choice for objects that you plan to access less than once a year |
+Use lifecycle Management rules to move objects between classes
 
 
 
