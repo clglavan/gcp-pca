@@ -604,3 +604,41 @@ Comprehensive security management and risk platform. Two tiers are supported: St
 - Detects sensitive data in:
   - Streams of data or structured text
   - Files in Cloud Storage and BigQuery
+
+## Encryption Keys
+
+### Cloud key management Service
+Highly available, low-latency service to generate, manage and apply cryptographic keys
+
+Cloud KMS encrypts and decrypts - does not store secrets itself - and controls access to keys
+- Supports both symmetrical (eg AES) and asymmetrical, like RSA or EC, algorithms
+- Includes a 24-h delay for key material destruction, to prevent accidental or malicious data loss
+- Supports regulatory compliance and adds optional variations: Cloud HSM, Cloud EKM, CMEK, and CSEK
+- Google Cloud recommends the regular automatic rotation of symmetric keys
+
+### Cloud Hardware, Security Module
+- Hosts ecnryption keys and performs cryptographic actions in cluster of FIPS 140-2 Level 3 certifies devices
+- Enables compliance with hardware requirements
+- Cloud HSM keys are cryptographically bound to region, with support for multi-regions
+- Cloud HSM properties:
+  - Keys are non-exportable
+  - Tamper resistant
+
+### Cloud External Key Management
+- Uses keys from supported external key management partners instead of GCP
+- Works only with supported CMEK integration services like BigQuery, Compute Engine, Cloud Run, Cloud Spanner, Cloud Storage, GKE, Pub/Sub and Secret Manager
+- Key ring should be created in same location as external key management partner
+- Benefits include
+  - key provenance
+  - access control
+  - centralized key management
+
+### Secret Manager
+- Fully managed service for storing, managing and accessing secrets as binary blobs or text strings
+- used for storing sensitive runtime info such as database passwords, API keys, or TLS certificates
+- Data of each secret is immutable and new versions are craeted each time value is modified
+- Best practices:
+  - follow the principle of least privilege
+  - limit access with IAM conditions
+  - Use the Secret Manager API instead of env vars
+  - Reference secrets by version number, not "latest" 
