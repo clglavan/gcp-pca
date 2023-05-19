@@ -378,3 +378,52 @@ Use lifecycle Management rules to move objects between classes
     - yes: Do you need low latency and NoSQL ?
       - yes: Cloud Bigtable
       - no: BigQuery
+
+## Networking
+
+### Cloud Domain
+- Global registrar for domain names using Google Domains
+- Uses build-in DNS or allows custom nameservers
+- Supports DNSSEC and private Whois records
+- Integration features:
+  - managed as a GCP project, including billing
+  - automatic domain verification wiht Search Console, App Engine, Cloud Run, etc
+  - works with Cloud IAM for access management
+
+### Mapping the Web with Cloud DNS
+- Global, scalable, fully-managed authoritative domain name service
+- Structural redundancies allow 100% uptime
+- Offers both public and private managed zones
+- features include
+  - Cloud IAM and Cloud Logging integration
+  - DNS peering and DNS forwarding
+  - anycast nameservers
+  - DNSSEC support
+
+### Static External IP Addresses
+Reserve static external IP addresses in projects and assign them to resources. GCP supports two types of static external ip addresses: regional and global
+- Regional IP addresses can be assigned to Compute Engine VMs and network load balancers
+- Global IP addresses are assigned to Anycast IPs and global load balancers (HTTP/S, SSL and TCP proxies)
+- Static IP addresses can be assigned through the console, gcloud command line, API or Terraform
+- No charge except for IP addresses that are reserved but not used
+
+### Cloud Load Balancing
+- Fully distributed, software-defined managed service that spreads network traffic across multiple instances of your apps
+- Layer 4 and Layer 7 load balancing with Cloud CDN integration and automatic scaling
+- Regional load balancing features:
+  - health checks
+  - session affinity
+  - IPv4 only
+- Global load balancing features:
+  - multi-region failover
+  - connects to closest region for lowest latency
+  - IPv4 and IPv6
+
+### Cloud CDN
+- Cloud Content Delivery Network (CDN) relies on Google Cloud's global edge network
+- Cloud CDN works with external GCP HTTPS load balancing
+- Manage cache rules with cache control header or allow Cloud CDN to automatically cache static content
+- Content sources include:
+  - Instance groups
+  - Zonal network endpoint groups (NEGs)
+  - Serverless NEGs like GAE and Cloud Functions
