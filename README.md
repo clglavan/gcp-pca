@@ -550,3 +550,57 @@ Can't use Cloud VPN with interconnect
 - enforces access cotnrol policies for apps and resources
 - based on load balancer and IAM. Permits only authenticated requests
 
+### Cloud Security Command Center
+Comprehensive security management and risk platform. Two tiers are supported: Standard and Premium.
+- designed to prevent, detect and respond to threats from a single pane of glass
+- Integrates and monitors many security services on GCP as well as external services
+- Identifies security compliance violations and misconfigurations in Google Cloud assets
+- Exports SCC data to Splunk or other Security Information and Event Management (SIEMs)
+
+| Standard | Premium |
+| ---- | ---- |
+| Security Health Analytics | Security Health Analytics - Standard plus compliance monitoring |
+| Web security Scanner | Web Security Secanner - Standard plus managed scans | 
+| Cloud Armor | Event Threat Detection | 
+| Cloud DLP | Container Threat Detection | 
+| Anomaly Detection | Continuous Exports to Pub/Sub | 
+
+### Web Security Scanner
+- Detects key vulnerabilities in App Engine, Compute Engine and Kubernetes Engine applications
+- Crawler based, supports public URLs and IPs not behind a firewall
+- Standard tier supports custom scans, Premium tier supports managed scans
+- Security Scanner detects:
+  - Cross-Site Scripting (XSS)
+  - Flash injection
+  - Mixed (HTTP/HTTPS) content
+  - Outdated and insecure JavaScript libraries
+
+### Cloud Armor
+- Edge-level, enterprise-grade DDoS protection and web application firewall (WAF) 
+- Leverages Google Cloud load balancing
+- Mitigates OWASP's top ten risks including broken authentication, SQL injections, and XSS
+- Features include:
+   - Allow or deny traffic by IPs or CIDR ranges
+   - Preview changes before pushing policy live
+   - Configure WAF rules to reduce false positives
+   - Reference named IP address lists from CDN partners Fastly, Cloudflare and Imperva
+
+### Event Threat Detection
+- Idenfity threats in near-real time by monitoring and analyzing Cloud Logging (audit,vpc flow, firewall, net logs, dns and linux cis)
+- Threats are defined by rules, which specify the needed logs
+- Create custom rules by running queries on log data exported to BigQuery
+- Quickly detect many different types of attacks, including:
+  - Malware
+  - Crypto mining
+  - Outgoing DDoS attacks
+  - Port scanning
+  - IAM anomalous grant
+  - Brute-force SSH
+
+### Cloud Data Loss Prevention
+- Inspection, classification and de-identification platform to protect sensitive data
+- Includes over 150 data detectors for personal identifiable information (PII))
+- Connect DLP results to Cloud SCC, Data Catalog, or export to external SIEM or governance tool.
+- Detects sensitive data in:
+  - Streams of data or structured text
+  - Files in Cloud Storage and BigQuery
