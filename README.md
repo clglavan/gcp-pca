@@ -427,3 +427,46 @@ Reserve static external IP addresses in projects and assign them to resources. G
   - Instance groups
   - Zonal network endpoint groups (NEGs)
   - Serverless NEGs like GAE and Cloud Functions
+
+### Virtual Private Cloud (VPC)
+- Global IPv4 unicast software-defined network
+- Automatic or custom creation (configure subnets, firewall rules, routes, VPNs, and BGP)
+- VPC is global, but subnets are regional
+- Options include:
+  - shared VPC
+  - VPC peering
+  - Bring your own IP addresses
+  - Packet mirroring
+
+### Cloud Interconnect
+Extends on-premises network to VPC through high available, low-latency connection
+| Dedicated Interconnect | Partner Interconnect | 
+| --- | --- |
+| Direct connection to GCP | Connects to GCP via partner |
+| Best for high bandwidth needs | Better for lower bandwidth needs | 
+| 10-Gbps or 100Gbps circuits | Dependent on partner capabilities |
+| Capacities from 50 Mbps - 50 Gbps | Capacities from 50 Mbps - 50 Gbps |
+| Traffic not encrypted, but can be added | Traffic not encrypted, but can be added | 
+
+Can't use Cloud VPN with interconnect
+
+### Cloud VPN
+- Securely connects peer network to VPC
+- Traffic is ecnrypted by one IPsec VPN gateway and decrypted by another gateway
+- Requires static IP address for persistence and does not support dynamic, e.g. "dial-in" VPN
+- Best practices:
+  - Keep Cloud VPN resources in own project
+  - use dynamic routing and BGP
+  - Establish secure firewall rules for VPN
+  - Generated strong pre-shared keys
+
+### Cloud router
+- Provides dynamic routing for hybrid networks linking VPCs to external networks via BGP
+- Works with Cloud VPN and Dedicated Interconnect
+- Automatically learns subnets in VPC and announces them to on-premises network
+- Works with router appliances
+
+### CDN Interconnect
+- Direct low-latency connectivity to certain CDN providers, with lower egress fees
+- Works for both pull and push cache fills
+- Best for high-volume egress traffic (lower costs) and frequent content updates (lower latency)
