@@ -470,3 +470,23 @@ Can't use Cloud VPN with interconnect
 - Direct low-latency connectivity to certain CDN providers, with lower egress fees
 - Works for both pull and push cache fills
 - Best for high-volume egress traffic (lower costs) and frequent content updates (lower latency)
+
+### Load balancing
+
+#### Dealing with Global web traffic
+- External, Internet-to-GCP Traffic
+  - HTTP or HTTPS Traffic -> HTTP(S) Load Balancing
+  - TCP Traffic
+    - SSL Offload
+      - yes: SSL Proxy
+      - no: Global LB or IPV6 (no ssl) ?
+        - yes: TCP Proxy
+        - no: Preserve Client IPs ?
+          - yes: Network TCP/UDP Load Balancing
+          - no: TCP Proxy
+  - UDP Traffic
+    - IPv6 Clients? Global LB?
+      - No: Network TCP/UDP Load Balancing
+      - yes: None
+- Internal IPv4 Clients, GCP Instance-to-Instance RFC 1918 Traffic
+  - TCP/UDP Traffic - Internal TCP/UDP Load Balancing
