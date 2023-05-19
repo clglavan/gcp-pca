@@ -490,3 +490,63 @@ Can't use Cloud VPN with interconnect
       - yes: None
 - Internal IPv4 Clients, GCP Instance-to-Instance RFC 1918 Traffic
   - TCP/UDP Traffic - Internal TCP/UDP Load Balancing
+
+## Security
+
+### Cloud IAM
+- Who, principals
+  - Google Account
+  - Service Account
+  - Google Group
+  - Google Workspace account
+  - Cloud Identity domain
+  - All authenticated users
+  - All users
+- Access, roles
+  - Billing Account Administrator
+  - Billing account User
+  - Storage Object creator
+  - Storage Object Viewer
+  - Cloud SQL Editor
+  - Cloud SQL instance user
+  - Security Admin
+  - etc
+- Which, resources
+  - VM instance
+  - GKE cluster
+  - Storage bucket
+  - Pub/Sub topic
+  - Organization
+  
+#### Roles
+- Primitive roles pre-date Cloud IAM and are the broadest with the most permissions: Owner, Editor and Viewer.
+- Predefined roles target specific rsources with specific actions at a granular level:
+  - Billing accounts Administrator (roles/billing.admin)
+  - Kubernetes Engine Developer (roles/container.developer)
+- Custom Roles Collect a unique set of permissions in order to ensure that the role has only the permissions needed, which enforces the principle of least privilege.
+
+#### IAM
+- Globally managed access control for organizations
+- Resource access is granted to roles( collection of permissions) and roles are granted to principals
+- Recommender helpls identify excess or needed permissions from principals
+- Grants IAM access to external identities (eg, AWS, Azure Active Directory, on-prem AD) with workload identity federation.
+
+#### Resource Manager
+- Modifies Cloud IAM policies across an organization
+- Cloud Asset Inventory monitors and analyzes all GCP assets, including IAM policies
+- Organization Policy Service sets contraints on resources and helps orgs stay in compliance
+
+#### Cloud Identity
+- Fully managed Identity as a Service for provisioning and managing identity resources
+- Each user and group is given a Cloud Identity account allowing Cloud IAM to manage Access.
+- Can be configured to federate identities with other identity providers (eg Active Directory )
+- Features include:
+  - SSO with other apps
+  - Multi-factor authentication
+  - Device security with endpoint management
+
+#### Cloud IAP
+- establishes a central authorization layer for applications accessed by HTTPS. Also internally by HTTP
+- enforces access cotnrol policies for apps and resources
+- based on load balancer and IAM. Permits only authenticated requests
+
