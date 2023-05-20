@@ -790,3 +790,35 @@ Cloud Monitoring collects measurements of the GCP resources used and visualizez 
 | Transform Data? | Migrate Relational Database? | Move from HBase to NoSQL? | Transfer VM Instance? |
 | --- | --- | --- | --- |
 | Work with ETL (Extract, Transform and Load) service such as Cloud Dataflow | Consider Cloud Spanner or more specific solutions for database type (PostgreSQL, MySQL or SQL Server) via the Database Migration Service | For a fully managed NoSQL database service with large capacity use Cloud Bigtable | Google Cloud offers a fullt-fledged VM migration service, Migrate for Compute Engine |
+
+## Planning a Data ss Objects Migrations
+- Get your team together
+  - Who can enable the data transfer, storage,it,network
+  - who can approve it, legal,security
+  - who can execute it, team lead, PM, enginnering team
+- Gather the requirements and Resoruces
+  - Which databasets need to be moved and can be 
+  - Where are they going
+  - What are your resources
+- Consider and Choose Transfer Options
+  - How long will it take and how much will it cost
+  - Offline or online transfer?    
+- Execute Final Prep and Testing
+  - Calculate all necessary costs as well as ROI
+  - Peform a functional Test
+  - Run a performance test
+- Certify Transfer's Integrity
+  - Enable versioning and backup on destination
+  - Validate data prior to moving
+  - Perform data integrity testing
+
+## Big Data migration Flowchart
+- is data close? Easily transferable online (size, bandwidth)
+  - no: one-off transfer ?
+    - yes: Use Transfer Applicance
+    - no: Use 3rd party solution, Aspera, Cloud FastPath Signiant
+  - yes: HTTP9s) access or is data in GCS or Amazon S3?
+    - yes: Cloud Storage Transfer Service
+    - no: is gsutil suitable?
+      - yes: use gsutil
+      - no: use 3rd party
