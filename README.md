@@ -751,3 +751,19 @@ Cloud Monitoring collects measurements of the GCP resources used and visualizez 
 - Metric is created each time log matches a defined query
 - System (auto-created) and User-defined (custom) varieties
 - Two types: Counter and Distribution
+
+### Cloud Debugger
+| Multiple Source Options | Code Search | Code Share | IDE Integration |
+| --- | --- | --- | --- |
+| Work with code from Cloud Source Repositories, GitHub, Bitbucket or GitLab | Quickly find code in a specific file, function, method or by line number | Debug sessions can be shared with any teammate for collaborative debugging | Integrated with IntelliJ IDEA, as well as Visual Studio Code and Atom |
+
+Two key cloud debugger tools
+| Snapshots | Logpoints | 
+| --- | --- |
+| Captures application state at a specific line location | Inject logs into running apps without redeployment|
+| Captures local variables | Logpoints remain active for 24h if not deleted or service is not redeployed
+| Captures call stack | Output send to target's environment | 
+| Take snapshots conditionally (Java,Python and Go) | |
+| Supports canarying | | 
+
+
