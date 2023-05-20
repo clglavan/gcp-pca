@@ -822,3 +822,50 @@ Cloud Monitoring collects measurements of the GCP resources used and visualizez 
     - no: is gsutil suitable?
       - yes: use gsutil
       - no: use 3rd party
+## Migrating Applications and data
+
+### Migrate for Compute Engine
+- Fully managed service to migrate VMs from on-premises data centers to Compute Engine
+- Provides test-clone capability for pre-migration validation of production workloads and data
+- Replicates instance data to GCP in the background with zero interruptions to source workloads
+- Valid source environments:
+  - VMware vSphere
+  - Amazon EC2
+  - Microsoft Azure VM
+  - Physical servers with supported OSes: CentOS, Debian, Oracle Linux, AWS Linux, Real, SUSE, Ubuntu and Windows Server
+
+Steps: 
+- Onboard
+  - Chose the VMs to migrate
+  - All VMs connected to vSphere datacenter are displayed on GCP console
+- Replicate
+  - Initial VMware snapshot is taken and replicated to GCP
+  - Incremental replication occurs every 2 hours
+- Configure
+  - Set details for Google Cloud landing zone
+  - Configuration options include project, instance type and network setting
+- Test-Clone
+  - Optionally clone a soruce VM to GCP for testing
+  - Test in sandbox environment isolating testing VM
+- Cut-Over
+  - Stop source VM, finalize replication and create new Compute Engine VM instance
+  - If new VM is not fully working perform manual rollback
+- Finalize
+  - Remove all replication data and other related storage resources
+  - Delete any VM instances created while testing
+
+### Migrate for Anthos and GKE
+Transform VM-based workloads into containers for Anthos or GKE clusters. Modernize your applications to cloud-native status and services
+
+- processing cluster transforms workloads from source VM to target container
+- includes fit assessment tools to evaluate desired workload for container compatibility
+- perform migration via GCP console, command-line or CRD-based API
+- migrate workloads to GKE autopilot clusters or serverless Cloud Run
+
+### VMware Engine
+WMware Engine provides all hardware and VMware licenses needed to run in ad edicated VMware SDDC on GCP
+
+- Migrating data centers
+- Scale on demand
+- Disaster recovery
+- High performance apps
