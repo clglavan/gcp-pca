@@ -757,13 +757,36 @@ Cloud Monitoring collects measurements of the GCP resources used and visualizez 
 | --- | --- | --- | --- |
 | Work with code from Cloud Source Repositories, GitHub, Bitbucket or GitLab | Quickly find code in a specific file, function, method or by line number | Debug sessions can be shared with any teammate for collaborative debugging | Integrated with IntelliJ IDEA, as well as Visual Studio Code and Atom |
 
-Two key cloud debugger tools
+### Snapshots / Logpoints
 | Snapshots | Logpoints | 
 | --- | --- |
 | Captures application state at a specific line location | Inject logs into running apps without redeployment|
 | Captures local variables | Logpoints remain active for 24h if not deleted or service is not redeployed
 | Captures call stack | Output send to target's environment | 
-| Take snapshots conditionally (Java,Python and Go) | |
-| Supports canarying | | 
+| Take snapshots conditionally (Java,Python and Go) | Add Logpoints conditionally |
+| Supports canarying | Supports canarying | 
 
+### Cloud Trace
+- Distributed tracing system that collects latency data from your apps for display and analysis
+- Work automatically with App Engine Standard, Cloud Functions and Cloud Run
+- Instrument code for App Engine Flex, Compute Engine, GKE and non-GCP environments
+- Benefits and features include:
+  - identifies bottlenecks
+  - alerts automatically if there's a big shift
+  - API available to work with any source
 
+### Cloud Profiler
+- Continuously analyzez performance of CPU or memory-intensive functions executed across an application
+- Agent-based with extremely low impact
+- Improve performance and reduce costs
+- Features include:
+  - Profiles saved for 30 days
+  - Exportable, for longer storage
+  - Supports Compute Engine, App Engine, kubernetes Engine and Dataproc
+  - Supports external apps via profiling agent
+
+# Data Migration Best practices
+
+| Transform Data? | Migrate Relational Database? | Move from HBase to NoSQL? | Transfer VM Instance? |
+| --- | --- | --- | --- |
+| Work with ETL (Extract, Transform and Load) service such as Cloud Dataflow | Consider Cloud Spanner or more specific solutions for database type (PostgreSQL, MySQL or SQL Server) via the Database Migration Service | For a fully managed NoSQL database service with large capacity use Cloud Bigtable | Google Cloud offers a fullt-fledged VM migration service, Migrate for Compute Engine |
